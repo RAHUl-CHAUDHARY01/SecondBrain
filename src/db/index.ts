@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import express from "express";
-import { DB_NAME } from "../constants.js";
+
 import { MONGODB_URI } from "../constants.js";
 
 
