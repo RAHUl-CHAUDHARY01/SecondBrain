@@ -3,8 +3,12 @@ import cors from "cors"
 import cookieParser from "cookie-parser"
 const app = express()
 console.log("hello");
-app.use(cors());
-
+app.use(cors({
+    origin: ["http://localhost:5173", "https://second-brain-hb9d.onrender.com"], // ✅ Allow frontend origins
+    credentials: true, // ✅ Allow cookies & headers
+    methods: "GET,POST,PUT,DELETE", // ✅ Allowed methods
+    allowedHeaders: "Content-Type,Authorization", // ✅ Allow headers
+}));
 app.use(express.json({limit:"16kb"}));
 app.use(express.urlencoded({extended:true,limit:"16kb"}));
 app.use(express.static("public"));
