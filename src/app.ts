@@ -3,12 +3,7 @@ import cors from "cors"
 import cookieParser from "cookie-parser"
 const app = express()
 console.log("hello");
-app.use(cors({
-    origin: ["https://second-brain-rahul.netlify.app"], // ✅ Allow frontend origins
-    credentials: true, // ✅ Allow cookies & headers
-    methods: ["GET,POST,PUT,DELETE"], // ✅ Allowed methods
-    allowedHeaders: "Content-Type,Authorization", // ✅ Allow headers
-}));
+app.use(cors());
 
 app.options('*',cors());
 app.use(express.json({limit:"16kb"}));
