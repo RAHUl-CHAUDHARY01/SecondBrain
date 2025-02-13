@@ -10,7 +10,13 @@ const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const app = (0, express_1.default)();
 exports.app = app;
 console.log("hello");
-app.use((0, cors_1.default)());
+app.use((0, cors_1.default)({
+    origin: ["http://localhost:5174"], // ✅ Allow frontend origins
+    credentials: true, // ✅ Allow cookies & headers
+    methods: ["GET,POST,PUT,DELETE"], // ✅ Allowed methods
+    allowedHeaders: "Content-Type,Authorization", // ✅ Allow headers
+}));
+app.options('*', (0, cors_1.default)());
 app.use(express_1.default.json({ limit: "16kb" }));
 app.use(express_1.default.urlencoded({ extended: true, limit: "16kb" }));
 app.use(express_1.default.static("public"));

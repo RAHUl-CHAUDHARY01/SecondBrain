@@ -4,11 +4,13 @@ import cookieParser from "cookie-parser"
 const app = express()
 console.log("hello");
 app.use(cors({
-    origin: ["http://localhost:5173", "https://second-brain-hb9d.onrender.com"], // ✅ Allow frontend origins
+    origin: ["https://second-brain-rahul.netlify.app/"], // ✅ Allow frontend origins
     credentials: true, // ✅ Allow cookies & headers
-    methods: "GET,POST,PUT,DELETE", // ✅ Allowed methods
+    methods: ["GET,POST,PUT,DELETE"], // ✅ Allowed methods
     allowedHeaders: "Content-Type,Authorization", // ✅ Allow headers
 }));
+
+app.options('*',cors());
 app.use(express.json({limit:"16kb"}));
 app.use(express.urlencoded({extended:true,limit:"16kb"}));
 app.use(express.static("public"));
