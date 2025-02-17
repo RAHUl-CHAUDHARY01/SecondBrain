@@ -10,20 +10,16 @@ const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const app = (0, express_1.default)();
 exports.app = app;
 console.log("hello");
-app.use((0, cors_1.default)({
-    origin: "*", // Allow only your frontend
-    credentials: true, // Allow cookies (if needed)
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Allowed HTTP methods
-    allowedHeaders: "Content-Type, Authorization", // Allowed headers
-}));
+app.use((0, cors_1.default)());
 app.use((req, res, next) => {
-    console.log("Request received from:", req.headers.origin);
+    // console.log("Request received from:", req.headers.origin);
     next();
 });
 app.use(express_1.default.json({ limit: "16kb" }));
 app.use(express_1.default.urlencoded({ extended: true, limit: "16kb" }));
 app.use(express_1.default.static("public"));
 app.use((0, cookie_parser_1.default)());
+app.get('/', (req, res) => { res.send('Hello from Express!'); });
 // const app=express();
 //bringing routes
 const user_routes_1 = __importDefault(require("./routes/user.routes"));
