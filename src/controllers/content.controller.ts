@@ -34,9 +34,9 @@ const addContent = asyncHandler(async (req: AuthRequest, res: Response) => {
 
 const getContent = asyncHandler(async (req: AuthRequest, res: Response) => {
     const userId= req.userId;
-    console.log(userId);
+    // console.log(userId);
     const content = await Content.find({ userId:userId }).populate("userId","username");
-    console.log(content);
+    // console.log(content);
     res.json(content);
 })
 

@@ -4,13 +4,13 @@ import cookieParser from "cookie-parser"
 const app = express()
 console.log("hello");
 app.use(cors({
-    origin: "https://second-brain-rahul.netlify.app", // Allow only your frontend
+    origin: "*", // Allow only your frontend
     credentials: true, // Allow cookies (if needed)
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Allowed HTTP methods
     allowedHeaders: "Content-Type, Authorization", // Allowed headers
 }));
 app.use((req, res, next) => {
-    console.log("Request received from:", req.headers.origin);
+    // console.log("Request received from:", req.headers.origin);
     next();
 });
 

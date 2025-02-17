@@ -11,12 +11,15 @@ const app = (0, express_1.default)();
 exports.app = app;
 console.log("hello");
 app.use((0, cors_1.default)({
-    origin: ["http://localhost:5174"], // ✅ Allow frontend origins
-    credentials: true, // ✅ Allow cookies & headers
-    methods: ["GET,POST,PUT,DELETE"], // ✅ Allowed methods
-    allowedHeaders: "Content-Type,Authorization", // ✅ Allow headers
+    origin: "*", // Allow only your frontend
+    credentials: true, // Allow cookies (if needed)
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Allowed HTTP methods
+    allowedHeaders: "Content-Type, Authorization", // Allowed headers
 }));
-app.options('*', (0, cors_1.default)());
+app.use((req, res, next) => {
+    console.log("Request received from:", req.headers.origin);
+    next();
+});
 app.use(express_1.default.json({ limit: "16kb" }));
 app.use(express_1.default.urlencoded({ extended: true, limit: "16kb" }));
 app.use(express_1.default.static("public"));

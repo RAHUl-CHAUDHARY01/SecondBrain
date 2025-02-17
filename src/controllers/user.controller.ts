@@ -44,7 +44,7 @@ const signUp = asyncHandler(async (req: Request, res: Response) => {
 const signIn = asyncHandler(async (req: Request, res: Response) => {
     const username = req.body.username;
     const password = req.body.password;
-    console.log(username, password);
+    // console.log(username, password);
     // Validation part
     if (!username) {
         throw new ApiError(400, "Username is required");

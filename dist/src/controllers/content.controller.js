@@ -35,9 +35,9 @@ const addContent = (0, asynchandler_1.asyncHandler)((req, res) => __awaiter(void
 exports.addContent = addContent;
 const getContent = (0, asynchandler_1.asyncHandler)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const userId = req.userId;
-    console.log(userId);
+    // console.log(userId);
     const content = yield content_model_1.Content.find({ userId: userId }).populate("userId", "username");
-    console.log(content);
+    // console.log(content);
     res.json(content);
 }));
 exports.getContent = getContent;
